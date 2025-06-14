@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>عمليات في ادارة المشتريات - Procurement Processes</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      font-size: 18px;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-top: 40px;
+      color: green;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .button {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .button button {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background-color: black;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    .button button:hover {
+      background-color: #333;
+    }
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      z-index: 500;
+      width: 120px;
+      height: 120px;
+      margin: -76px 0 0 -76px;
+      border-bottom: 16px solid green;
+      border-top: 16px solid blue;
+      border-left: 16px solid blueviolet;
+      border-radius: 50%;
+      animation: spin 2s linear infinite;
+      background-color: white;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .animate-bottom {
+      position: relative;
+      animation: animatebottom 1s;
+    }
+
+    @keyframes animatebottom {
+      from { bottom: -100px; opacity: 0; }
+      to { bottom: 0; opacity: 1; }
+    }
+
+    #myDiv {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .container ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      padding: 0;
+    }
+
+    .container li {
+      padding: 10px;
+      background-color: #f4f4f4;
+      border-radius: 6px;
+    }
+
+    .image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    hr {
+      border: 1px solid;
+      margin: 20px auto;
+    }
+
+    /* Sidebar navigation */
+    .sidebar {
+      position: fixed;
+      top: 20%;
+      right: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 6px;
+      z-index: 1000;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 10px;
+    }
+
+    .sidebar a {
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+      color: darkblue;
+    }
+  </style>
+
+  <script>
+    var myVar;
+    function myFunction() {
+      myVar = setTimeout(showPage, 2000);
+    }
+
+    function showPage() {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("myDiv").style.display = "block";
+    }
+  </script>
+</head>
+
+<body onload="myFunction()">
+
+  <!-- Loader -->
+  <div id="loader"></div>
+
+  <!-- Back Button -->
+  <div class="button">
+    <a href="./SAP.html">
+      <button>الرجوع للصفحة السابقة</button>
+    </a>
+  </div>
+
+  <!-- Sidebar Navigation -->
+  <div class="sidebar">
+    <ul>
+      <li><a href="#Procurement">دورة المشتريات</a></li>
+      <li><a href="#Master">البيانات الرئيسية</a></li>
+      <li><a href="#Consignment">طلب الامانات</a></li>
+      <li><a href="#STO">طلب نقل البضائع</a></li>
+      <li><a href="#TransferP">تغيير الحالة</a></li>
+      <li><a href="#PI">الجرد اليدوي</a></li>
+    </ul>
+  </div>
+
+  <!-- Page Content -->
+  <div id="myDiv" class="animate-bottom">
+
+    <h1>عمليات في المشتريات SAP MM Processes</h1>
+
+    <div class="container">
+      <ul>
+        <li><a href="#Procurement">دورة المشتريات</a></li>
+        <li><a href="#Master">البيانات الرئيسية</a></li>
+        <li><a href="#Consignment">طلب الامانات</a></li>
+        <li><a href="#STO">طلب نقل البضائع</a></li>
+        <li><a href="#TransferP">تغيير الحالة</a></li>
+        <li><a href="#PI">الجرد اليدوي</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1 -->
+    <h1 id="Procurement" style="color:darkblue;">1. دورة المشتريات Procurement Cycle</h1>
+    <div class="image">
+      <img src="./Procurement Cycle Process flow.jpeg" alt="Procurement Cycle Process Flow" width="700" height="500">
+    </div>
+    <br>
+    <br>
+    <p style="color: darkblue; text-align: right; padding-right: 20%;">
+      هذي هي الدورة الشاملة في ادارة المشتريات...هذي هي الدورة الشاملة في ادارة المشتريات (كشكل عام)
+      <br>
+      مهم اننا نفهم كيف تتم الدورة وتسلسلها بالترتيب وايش العملية بكل خطوة <br>..
+      <br>
+      
+      اولا انشاء طلب المهمات Purchase Requisition اللي نحدد فيه المادة اللي نبي نطلبها (بعد مانكريتها وننشئها) وكميتها وو الخ.. <br>
+      بعدها لازم نسوي Request For Quotation او طلب مناقصة للحصول على افضل سعر لنا ( بعد مانكريت الموردين وننشئهم) <br>
+      بعد ذلك نستعرض قائمة الاسعار Price Comparison List ثم ننشئ المناقصة Create Quotation <br>
+      ثم اخر شيء نسوي طلب انشاء المناقصة كتاكيد Create Request for Quotation <br>
+      بعد ذلك ننشئ عقد كميات او عقد قيمة (خطوة غير الزامية) Create Contract (Value- Quantity) <br>
+      بعد ذلك ننشئ اتفاقية الجدولة Scheduling Agreement (خطوة غير الزامية ) <br>
+      بعد ذلك ننشئ طلب شراء Purchase Order من طلب المهمات او طلب شراء جديد مباشر <br>
+      ثم نقوم بعملية الاستلامة المخزنية Goods Receipt <br>
+      واخيرا نقوم بالتاكد من الفاتورة والدفع Invoice Verification <br>
+      هذي هي دورة المشتريات بشكلها العام والبسيط هي خطوتك الاولى في فهم ادارة المشتريات 
+    </p>
+
+    <hr style="width: 22.5%; color: blue;">
+    <hr style="width: 45%; color: blue;">
+    <hr style="width: 45%; color: #4d0256;">
+    <hr style="width: 22.5%; color: #4d0256;">
+
+    <!-- Section 2 -->
+    <h1 id="Master" style="color:#4d0256;">2. البيانات الرئيسية Master Data</h1>
+    <p style="color:#4d0256; font-size: large; direction: rtl;text-align: right; padding-right: 20%;">
+      البيانات الرئيسية تطرقنا لها من قبل في الباب التعريفي بموديول ادارة المواد<br>
+      زي ماقلنا هي بيانات اساسية نعبيها عشان نسوي دورة المشتريات اللي ذكرتها قبل شوي وهي على 3 انواع <br>
+      1- بيانات المواد الاساسية Material Master Data (MM01) <br>
+      2. بيانات الموردين الاساسية Vendor Master Data (BP) <br>
+      3. سجل بيانات الشراء Purchase Info Record (ME11) <br>
+      مانقدر نقوم باي طلبات او عمليات شراء بدون مانسوي البيانات الرئيسية يعني بمعنى اخر هي الكل بالكل
+    </p>
+
+    <hr style="border: 1px solid;color: #4d0256; width: 22.5%;">
+    <hr style="border: 1px solid;color: #4d0256; width: 45%;">
+    <hr style="border: 1px solid;color: orangered; width: 45%;">
+    <hr style="border: 1px solid;color: orangered; width: 22.5%;">
+
+    <!-- Section 3 -->
+    <h1 id="Consignment" style="direction: rtl; color: orangered; font-size:x-large;">3. طلب الامانات Consignment</h1>
+    <p style="color:orangered; font-size: large; direction: rtl;text-align: right; padding-right: 20%;">
+      هي عملية تصير بين المشتري وبين المورد بحيث يوفر لك المواد والبضائع في مخازن المشتري لكنها تبقى ملك للمورد بحيث تسحب منها حسب الرغبة وتستخدمها والدفع يتم فقط عند السحب من البضائع. <br>
+      يوجد طريقتين لتنفيذ طلب الامانات: <br>
+      الطريقة الاولى: <br>
+      1. انشاء سجل معلومات الشراء Purchase Info Record <br>
+      2. انشاء طلب شراء PO مع وضع علامة صح عند خيار Consignment <br>
+      3. استلامة مخزنية بالرجوع الى طلب الشراء Goods Receipt with Reference to PO <br>
+      4. ترانسفر بوستنق Transfer Posting with Reference to Other مع حركة 411K <br>
+      5. التسوية Settlement باستخدام MRKO <br>
+      الطريقة الثانية: <br>
+      1. انشاء سجل معلومات شراء Purchase Info Record <br>
+      2. انشاء طلب شراء PO <br>
+      3. استلامة مخزنية Goods Receipt <br>
+      4. اخراج مخزني Goods Issue <br>
+      5. التسوية MRKO <br>
+    </p>
+
+    <hr style="border: 1px solid;color: orange; width: 22.5%;">
+    <hr style="border: 1px solid;color:orange; width: 45%;">
+    <hr style="border: 1px solid;color: cadetblue; width: 45%;">
+    <hr style="border: 1px solid;color: cadetblue; width: 22.5%;">
+
+    <!-- Section 4 -->
+    <h1 id="STO" style="direction: rtl; color:cadetblue; font-size:x-large;">4. طلب نقل البضائع STO</h1>
+    <p style="color:cadetblue; font-size: large; direction: rtl; text-align: right; padding-right: 20%;">
+      النوع الاول: نقل بضائع من فرع الى فرع او مصنع الى مصنع Plant to Plant <br>
+      1. انشاء طلب شراء من نوع PO UB STO <br>
+      2. اخراج مخزني مع حركة 351 <br>
+      3. استلام مخزني مع حركة 101 <br>
+      النوع الثاني: نقل مخزني من مستودع الى مستودع داخل نفس المصنع <br>
+      1. عمل ترانسفر بوستنق 311 <br>
+    </p>
+
+    <hr style="border: 1px solid;color: cadetblue; width: 22.5%;">
+    <hr style="border: 1px solid;color:cadetblue; width: 45%;">
+    <hr style="border: 1px solid;color: brown; width: 45%;">
+    <hr style="border: 1px solid;color: brown; width: 22.5%;">
+
+    <!-- Section 5 -->
+    <h1 id="TransferP" style="direction: rtl; color:brown; font-size:x-large;">5. تغيير حالة التسجيل Transfer Posting</h1>
+    <p style="color:brown; font-size: large; direction: rtl; text-align: right; padding-right: 20%;">
+      هي عملية تغير حالة المادة من حالة لحالة يعني من تحت الفحص الى متاحة للبيع مثلا او من متجر لمتجر وهكذا <br>
+      مثال على حالات المواد هي: <br>
+      unrestricted, Quality inspection, Blocked, In transit, Sales order stock وهكذا. <br>
+      افضل حركة هي حركة 321 وهي تغيير من تحت الفحص الى متاح للبيع <br>
+      الحركة الثانية هي 322 وهي عكس الاولى <br>
+    </p>
+
+    <!-- Section 6 -->
+    <h1 id="PI" style="direction: rtl; color:darkslateblue; font-size:x-large;">6. الجرد اليدوي Physical Inventory</h1>
+    <p style="color:darkslateblue; font-size: large; direction: rtl; text-align: right; padding-right: 20%;">
+      عملية الجرد اليدوي تتم من خلال عدة خطوات: <br>
+      1. انشاء مستند جرد MI01 <br>
+      2. طباعة المستند واخذ الجرد الفعلي <br>
+      3. تحديث مستند الجرد بادخال الكميات الفعلية MI04 <br>
+      4. تعديل الفرق او تاكيد الجرد MI07 <br>
+    </p>
+
+  </div>
+
+</body>
+</html>

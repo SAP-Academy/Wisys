@@ -283,12 +283,37 @@
     <!-- Section 4 -->
     <h1 id="STO" style="direction: rtl; color:cadetblue; font-size:x-large;">4. طلب نقل البضائع STO</h1>
     <p style="color:cadetblue; font-size: large; direction: rtl; text-align: right; padding-right: 20%;">
-      النوع الاول: نقل بضائع من فرع الى فرع او مصنع الى مصنع Plant to Plant <br>
-      1. انشاء طلب شراء من نوع PO UB STO <br>
-      2. اخراج مخزني مع حركة 351 <br>
-      3. استلام مخزني مع حركة 101 <br>
-      النوع الثاني: نقل مخزني من مستودع الى مستودع داخل نفس المصنع <br>
-      1. عمل ترانسفر بوستنق 311 <br>
+     ويكون على نوعين
+     <br>
+النوع الاول : نقل بضائع من فرع الى فرع او مصنع الى مصنع Plant to Plant------
+ويكون بالطريقة التالية:
+<br>
+<br>
+<br>
+1.انشاء طلب شراء من نوع (PO UB STO)
+<br>
+2. اخراج مخزني بالرجوع لطلب الشراء مع حركة 351 
+<br>
+(Goods Issue with reference to PO MvT 351)
+<br>
+(مهم اختيار الحركة جدا)
+<br>
+<br>
+3.استلامة مخزنية بالرجوع الى طلب الشراء مع حركة رقم 101 
+<br>
+(Goods Receipt with reference to PO MvT 101)
+<br>
+<br>
+النوع الثاني : نقل بضائع من مستودع الى مستودع Storage Location - Storage Location------
+ويكون بالطريقة التالية :
+<br>
+<br>
+<br>
+1.ازالة من - بالرجوع الى طلب الشراء (Remove From with Reference to PO)
+<br>
+2.استعراض للتاكد (display)
+<br>
+3.وضع بالمخزن (Place in Storage)
     </p>
 
     <hr style="border: 1px solid;color: cadetblue; width: 22.5%;">
@@ -299,22 +324,57 @@
     <!-- Section 5 -->
     <h1 id="TransferP" style="direction: rtl; color:brown; font-size:x-large;">5. تغيير حالة التسجيل Transfer Posting</h1>
     <p style="color:brown; font-size: large; direction: rtl; text-align: right; padding-right: 20%;">
-      هي عملية تغير حالة المادة من حالة لحالة يعني من تحت الفحص الى متاحة للبيع مثلا او من متجر لمتجر وهكذا <br>
-      مثال على حالات المواد هي: <br>
-      unrestricted, Quality inspection, Blocked, In transit, Sales order stock وهكذا. <br>
-      افضل حركة هي حركة 321 وهي تغيير من تحت الفحص الى متاح للبيع <br>
-      الحركة الثانية هي 322 وهي عكس الاولى <br>
+      <br>
+      <br>تكون على نحوين :
+      <br>
+      الاول وهو تغيير حالة مادة الى حالة اخرى Material to Material Condition باستخدام حركة رقم 309 <br> (MvT309) من داخل  الاستلامة المخزنية
+ <br>
+      <br>الحالة الثانية تحول نوع البضاعة من نوع الى نوع باختيار الحركة المرادة بالـ (Key word) <br>
+مثلا تبي تحول نوع البضاعة من Unrestricted Stock To Blocked Stock تغيرها بالبحث وتحدد الحركة ببساطة <br>
     </p>
-
+    <hr style="border: 1px solid;color: brown; width: 22.5%;">
+    <hr style="border: 1px solid;color:brown; width: 45%;">
+    <hr style="border: 1px solid;color: darkslateblue; width: 45%;">
+    <hr style="border: 1px solid;color: darkslateblue; width: 22.5%;">
     <!-- Section 6 -->
     <h1 id="PI" style="direction: rtl; color:darkslateblue; font-size:x-large;">6. الجرد اليدوي Physical Inventory</h1>
     <p style="color:darkslateblue; font-size: large; direction: rtl; text-align: right; padding-right: 20%;">
-      عملية الجرد اليدوي تتم من خلال عدة خطوات: <br>
-      1. انشاء مستند جرد MI01 <br>
-      2. طباعة المستند واخذ الجرد الفعلي <br>
-      3. تحديث مستند الجرد بادخال الكميات الفعلية MI04 <br>
-      4. تعديل الفرق او تاكيد الجرد MI07 <br>
-    </p>
+وله 3 طرق المطلوب منك طريقة وحده لكن جبت لك كل الطرق واختر مايناسبك منها
+<br>
+<br>
+الطريقة الاولى بالخطوات التالية:
+<br>
+1.انشاء مسودة جرد مخزني Create Physical Inventory Document (MI01)
+<br>
+2.طباعة مسودة الجرد Print Physical Inventory Document (MI21)
+<br>
+3. ادخال العد Enter the Count (MI04)
+<br>
+4.اعادة العد (عملية اختيارية في حالات الشك والتاكيد) (MI11)
+<br>
+5.تسجيل الفارق Post Difference (MI07)
+<br>
+<br>
+
+الطريقة الثانية بالخطوات التالية :
+<br>
+1.انشاء مسودة جرد مخزني Create Physical Inventory Document (MI01)
+<br>
+2.طباعة مسودة الجرد Print Physical Inventory Document (MI21)
+<br>
+3. القيام بالعد وتسجيل الفارق بنفس الوقت Count and Post the Difference (MI08)
+<br>
+<br>
+<br>
+نشوف الطريقة الثالثة وهي بخطوة وحده فقط:
+<br>
+1. انشاء مسودة جرد مخزني وادخال العد وتسجيل الفارق بخطوة واحدة
+<br>
+Create Physical Inventory Document , Enter count and Post the difference (MI10)
+<br>
+<br>
+
+
 
   </div>
 

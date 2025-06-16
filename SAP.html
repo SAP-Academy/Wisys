@@ -10,36 +10,7 @@
     body {
       background-color: rgb(108, 108, 225);
     }
-    #loader {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      z-index: 1;
-      width: 120px;
-      height: 120px;
-      margin: -76px 0 0 -76px;
-      border-bottom: 16px solid #38063a;
-      border-radius: 50%;
-      border-top: 16px solid orange;
-      animation: spin 2s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .animate-bottom {
-      position: relative;
-      animation-name: animatebottom;
-      animation-duration: 1s;
-    }
-    @keyframes animatebottom {
-      from { bottom: -100px; opacity: 0 }
-      to { bottom: 0; opacity: 1 }
-    }
-    #myDiv {
-      display: none;
-      text-align: center;
-    }
+
     a:link, a:visited {
       text-decoration: none;
       background-color: rgb(3, 11, 99);
@@ -50,14 +21,16 @@
       font-size: 29px;
       text-align: center;
     }
+
     a:hover, a:active {
       background-color: rgb(101, 6, 118);
       color: yellow;
-      text-align: center;
     }
+
     .container {
       text-align: center;
     }
+
     #faq-toggle {
       position: fixed;
       top: 200px;
@@ -72,6 +45,7 @@
       font-size: 24px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
+
     #faq-sidebar {
       position: fixed;
       top: 0;
@@ -87,42 +61,41 @@
       direction: rtl;
       overflow-y: auto;
     }
+
     #faq-sidebar.open {
       left: 0;
     }
+
     #comments {
       max-height: 300px;
       overflow-y: auto;
       font-size: 14px;
       padding: 5px;
     }
+
     .comment {
       border-bottom: 1px solid #ddd;
       padding: 10px 0;
     }
   </style>
 </head>
-<body onload="myFunction()">
-
-<!-- Loader -->
-<div id="loader"></div>
+<body>
 
 <!-- Page Content -->
-<div id="myDiv" class="animate-bottom">
-  <div style="background-color: aliceblue; font-size: xx-large; direction: rtl; font-size: 100px;" class="container">
+<div class="container text-center" style="background-color: aliceblue; font-size: xx-large; direction: rtl;">
+  <div style="font-size: 100px;">
     اكاديمية ساب MM للتعلم
-    <br>
-    <div class="row">
-      <div style="font-size: 50px;">أن تعرف اكثر!</div>
-      <img src="./wisys logo new.png" alt="" width="auto" height="auto">
-    </div>
-    <p style="display: inline-block; background-color: #5869e9; margin-left: 10px;"><a href="./What_is_SAP.html">نظام SAP / الحلول</a></p>
-    <p style="display: inline-block; background-color: #5869e9; margin-left: 10px;"><a href="./SAP_MM.html">موديول ادارة المواد MM</a></p>
-    <p style="display: inline-block; background-color: #5869e9; margin-left: 10px;"><a href="./SAP_Consultant.html">وظيفة استشاري الساب</a></p>
-    <br>
-    <p style="display: inline-block; background-color: #5869e9; margin-left: 10px;"><a href="./Certificates_SAP.html">الشهادات</a></p>
-    <p style="display: inline-block; background-color: #5869e9; margin-left: 10px;"><a href="./SAP_MM_Processes.html">عمليات المشتريات</a></p>
   </div>
+  <div class="row">
+    <div style="font-size: 50px;">أن تعرف اكثر!</div>
+    <img src="./wisys logo new.png" alt="logo" width="auto" height="auto">
+  </div>
+  <p style="display: inline-block; background-color: #5869e9; margin-left: 10px;"><a href="./What_is_SAP.html">نظام SAP / الحلول</a></p>
+  <p style="display: inline-block; background-color: #5869e9; margin-left: 10px;"><a href="./SAP_MM.html">موديول ادارة المواد MM</a></p>
+  <p style="display: inline-block; background-color: #5869e9; margin-left: 10px;"><a href="./SAP_Consultant.html">وظيفة استشاري الساب</a></p>
+  <br>
+  <p style="display: inline-block; background-color: #5869e9; margin-left: 10px;"><a href="./Certificates_SAP.html">الشهادات</a></p>
+  <p style="display: inline-block; background-color: #5869e9; margin-left: 10px;"><a href="./SAP_MM_Processes.html">عمليات المشتريات</a></p>
 </div>
 
 <!-- Sidebar Toggle -->
@@ -141,13 +114,6 @@
 
 <!-- Scripts -->
 <script>
-  function myFunction() {
-    setTimeout(function () {
-      document.getElementById("loader").style.display = "none";
-      document.getElementById("myDiv").style.display = "block";
-    }, 3000);
-  }
-
   function toggleFAQ() {
     document.getElementById("faq-sidebar").classList.toggle("open");
   }
@@ -171,7 +137,7 @@
   firebase.initializeApp(firebaseConfig);
   const database = firebase.database();
   const commentsDiv = document.getElementById("comments");
-  const isModerator = true; // Set to false for regular users
+  const isModerator = true; // Change to false if user is not moderator
 
   // Submit comment
   document.getElementById("commentForm").addEventListener("submit", function (e) {

@@ -60,6 +60,10 @@
   <div class="container">
     <h2 class="mb-4 text-center text-primary">💬 الدعم والاستفسارات</h2>
 
+    <div class="text-center mb-3">
+      <a href="./SAP.html" class="btn btn-outline-primary">الرجوع للصفحة السابقة</a>
+    </div>
+
     <form id="commentForm">
       <input type="text" id="name" class="form-control mb-2" placeholder="اسمك" required>
       <textarea id="message" class="form-control mb-2" placeholder="اكتب سؤالك هنا ..." required></textarea>
@@ -69,7 +73,7 @@
     <div id="comments" class="mt-4"></div>
   </div>
 
-  <!-- Firebase SDK (نسخة متوافقة مع HTML) -->
+  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 
@@ -166,7 +170,7 @@
           const originalComment = snapshot.val();
 
           // إرسال البريد باستخدام emailjs
-          emailjs.send("service_1h1nztc", "template_p0jx283", {
+          emailjs.send("service_1h1nztc", "template_35r66gm", {
             commenter_name: originalComment.name,
             comment_message: originalComment.message,
             reply_message: replyMessage

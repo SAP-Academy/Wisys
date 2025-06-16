@@ -90,9 +90,6 @@
     #faq-sidebar.open {
       left: 0;
     }
-    #comment-section {
-      margin-top: 10px;
-    }
     #comments {
       max-height: 300px;
       overflow-y: auto;
@@ -144,17 +141,15 @@
 
 <!-- Scripts -->
 <script>
-  var myVar;
   function myFunction() {
-    myVar = setTimeout(showPage, 3000);
+    setTimeout(function () {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("myDiv").style.display = "block";
+    }, 3000);
   }
-  function showPage() {
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("myDiv").style.display = "block";
-  }
+
   function toggleFAQ() {
-    const sidebar = document.getElementById("faq-sidebar");
-    sidebar.classList.toggle("open");
+    document.getElementById("faq-sidebar").classList.toggle("open");
   }
 </script>
 
@@ -168,18 +163,18 @@
     authDomain: "wisys-comment.firebaseapp.com",
     databaseURL: "https://wisys-comment-default-rtdb.firebaseio.com/",
     projectId: "wisys-comment",
-    storageBucket: "wisys-comment.firebasestorage.app",
+    storageBucket: "wisys-comment.appspot.com",
     messagingSenderId: "466878134869",
     appId: "1:466878134869:web:dd7ed0fe80adfd605532dc"
   };
 
   firebase.initializeApp(firebaseConfig);
   const database = firebase.database();
+  const commentsDiv = document.getElementById("comments");
+  const isModerator = true; // Set to false for regular users
 
-  const isModerator = true; // Change this to false for regular users
-
-  // Handle comment submission
-  document.getElementById("commentForm").addEventListener("submit", function(e) {
+  // Submit comment
+  document.getElementById("commentForm").addEventListener("submit", function (e) {
     e.preventDefault();
     const name = document.getElementById("name").value.trim();
     const message = document.getElementById("message").value.trim();
@@ -194,10 +189,8 @@
     }
   });
 
-  const commentsDiv = document.getElementById("comments");
-
-  // Display comments
-  firebase.database().ref("comments").on("child_added", function(snapshot) {
+  // Listen for new comments
+  firebase.database().ref("comments").on("child_added", function (snapshot) {
     const data = snapshot.val();
     const commentId = snapshot.key;
 
@@ -207,7 +200,6 @@
       <strong>${data.name}</strong><br>${data.message}<br><small>${data.timestamp}</small>
     `;
 
-    // Show reply if exists
     if (data.reply) {
       commentElement.innerHTML += `
         <div style="background:#f3f3f3; border-right: 4px solid #007bff; padding: 10px; margin-top: 10px;">
@@ -218,7 +210,6 @@
       `;
     }
 
-    // Show reply form if moderator and no reply yet
     if (isModerator && !data.reply) {
       const replyDiv = document.createElement("div");
       replyDiv.innerHTML = `
@@ -233,7 +224,6 @@
     commentsDiv.prepend(commentElement);
   });
 
-  // Submit moderator reply
   function submitReply(commentId, form) {
     const replyMessage = form.replyMessage.value.trim();
     if (replyMessage) {
